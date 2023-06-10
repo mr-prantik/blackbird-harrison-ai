@@ -1,7 +1,7 @@
 import * as EmailValidator from 'email-validator';
 
 const hasSpecialChar = (str) => {
-    return /[ `!@#$%^&()_+\-=[\]{};':\\|,.<>/?~]/.test(str);
+    return /[ `!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/.test(str);
 }
 
 const hasNumber = (str) => {
@@ -16,20 +16,11 @@ const hasUpperCase = (str) => {
     return str.toLowerCase() !== str;
 }
 
-
-function validatePwd(text) {
-    if(text.length < 8) 
-        return "Password should be of 8 or more characters.";
-    
-    if(!hasLowerCase(text) || !hasUpperCase(text))
-        return "Password should contain atleast 1 character of both uppercase and Lowercase.";
-
-    if(!hasNumber(text))
-        return "Password should contain atleast 1 digit character";
-
-    if(!hasSpecialChar(text))
-        return "Password should contain atleast 1 speacial character";
-
+function validatePassword(text) {
+    if (text.length < 8) return "Password should be 8 or more characters";
+    if (!hasLowerCase(text) || !hasUpperCase(text)) return "Password should contains minimum 1 character for both uppercase and lowercase letter";
+    if (!hasNumber(text)) return "Password should contains minimum 1 digit of numeric value";
+    if (!hasSpecialChar(text)) return "Password should contains minimum 1 special character";
     return "";
 }
 
@@ -38,5 +29,6 @@ function validateEmail(email) {
 }
 
 export {
-    validateEmail, validatePwd,
+    validatePassword,
+    validateEmail,
 }
