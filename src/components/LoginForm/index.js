@@ -8,10 +8,13 @@ import Grid from '@mui/material/Grid';
 import Snackbar from '@mui/material/Snackbar';
 import Typography from '@mui/material/Typography';
 import logo from '../../assets/logo.svg';
+import { validateEmail, validatePwd } from './validation';
+
 
 
 export default function LoginForm() {
   const [showAlert, setShowAlert] = useState(false);
+  
   const validateForm = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget);
@@ -19,7 +22,7 @@ export default function LoginForm() {
     const password = data.get('password');
 
     // Add validation code here
-
+    
   }
 
   const handleSubmit = (event) => {
