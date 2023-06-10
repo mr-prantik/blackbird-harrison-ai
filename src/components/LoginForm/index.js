@@ -14,7 +14,9 @@ import { validateEmail, validatePwd } from './validation';
 
 export default function LoginForm() {
   const [showAlert, setShowAlert] = useState(false);
-  
+  const [showErrorEmail, setShowErrorEmail] = useState(false);
+  const [showErrorPwd, setShowErrorPwd] = useState(false);
+
   const validateForm = (event) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget);
@@ -22,6 +24,26 @@ export default function LoginForm() {
     const password = data.get('password');
 
     // Add validation code here
+    const emailVerification = validateEmail(email);
+
+    if(!emailVerification) {
+      setShowErrorEmail("Please enter valid email");
+    }
+
+    else
+      setShowErrorEmail(false);
+
+
+    const PwdVerification = validatePwd(password)
+
+    if(!PwdVerification) {
+      setShowErrorPwd(PwdVerification);
+    }
+
+    else  
+      setShowErrorPwd(false);
+
+    return (emailVerification && !PwdVerification)
     
   }
 

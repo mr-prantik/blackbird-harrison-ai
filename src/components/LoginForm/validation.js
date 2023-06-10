@@ -17,7 +17,7 @@ const hasUpperCase = (str) => {
 }
 
 
-function ValidatePwd(text) {
+function validatePwd(text) {
     if(text.length < 8) 
         return "Password should be of 8 or more characters.";
     
@@ -33,11 +33,10 @@ function ValidatePwd(text) {
     return "";
 }
 
-function ValidateEmail(email) {
+function validateEmail(email) {
     return EmailValidator.validate(email);
 }
 
 export {
-    ValidatePwd,
-    ValidateEmail,
+    validateEmail, validatePwd,
 }
